@@ -1,5 +1,6 @@
 ## Git commit messages
 
+- Important: don't commit before I review your changes. I will review your code and provide feedback before you commit.
 - use Conventional Commits for commit messages. See [https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/)
 - keep commit messages concise and meaningful
 - use the imperative mood in the subject line (e.g., "fix bug" instead of "fixed bug" or "fixes bug")
