@@ -2,9 +2,12 @@ import * as THREE from 'three';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x111111);
+// Linear fog in the same colour as the background so the ground fades into the horizon
+scene.fog = new THREE.Fog(0x111111, 5, 30);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.z = 3;
+camera.position.set(0, 1.5, 4);
+camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -16,6 +19,15 @@ const cube = new THREE.Mesh(
   new THREE.MeshStandardMaterial({ color: 0x00ff00 }),
 );
 scene.add(cube);
+
+// Large green ground plane, rotated from vertical (XY) to horizontal (XZ)
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(200, 200),
+  new THREE.MeshStandardMaterial({ color: 0x2e7d32 }),
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -1;
+scene.add(ground);
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 const light = new THREE.DirectionalLight(0xffffff, 2);
